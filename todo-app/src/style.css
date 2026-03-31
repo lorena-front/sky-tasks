@@ -9,8 +9,8 @@
 /* Variables */
 
 :root {
-    --jolly-font: "Gabriela", serif; 
-    --inter-font: "Inter", sans-serif;
+    --main-font: "Pixelify Sans", sans-serif;
+    --bg-color: #bde0fe;
 }
 
 /* Layout */
@@ -20,5 +20,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: var(--jolly-font);
+    font-family: var(--main-font);
+
+    background-image: url(./assets/images/cloud.png);
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-color: var(--bg-color);
+
+    animation: cloudAnimation 65s linear infinite;
+    overflow: hidden;
+
+}
+
+@keyframes cloudAnimation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -1000px 0;
+    }
 }

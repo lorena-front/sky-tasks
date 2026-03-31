@@ -32,7 +32,7 @@ const deleteTask = (index) => {
 <template>
   <main>
     <div class="card">
-      <h1>Todo App</h1>
+      <h1>Tasks <span class="material-symbols-outlined">ink_pen</span></h1>
       <div class="card-content">
         <div class="card-input">
           <input type="text" v-model="task" @keyup.enter="addTask" />
@@ -42,12 +42,12 @@ const deleteTask = (index) => {
           <li v-for="(item, index) in tasks" :key="index">
             {{ item }}
 
-            <span class="material-symbols-outlined" @click="deleteTask(index)">
+            <span class="material-symbols-outlined delete-btn" @click="deleteTask(index)">
               close
             </span>
           </li>
         </ul>
-        <p v-if="tasks.length === 0">
+        <p class="empty-msg" v-if="tasks.length === 0">
           There's nothing yet.
         </p>
       </div>
@@ -61,11 +61,26 @@ main {
   flex-direction: column;
 }
 
+h1 {
+  font-size: 1.3rem;
+  margin: 1rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
 .card {
   width: 20rem;
   height: 25rem;
-  text-align: center;
   overflow-y: auto;
+  padding: .9375rem;
+  box-shadow: 8px 8px 0 black;
+  background-color: rgb(255 182 214 / 92%);
+  backdrop-filter: blur(2px);
+  border-radius: 0.5rem;
+  transform: rotate(-0.5deg);
 }
 
 .card-content {
@@ -77,16 +92,32 @@ main {
 
 .card-input {
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .card-input input,
 .card-input button {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 0.5rem;
+}
+
+.card-input input {
+  border: 2px solid black;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
 }
 
 .card-input button {
   margin-left: 1rem;
   font-family: var(--inter-font);
+  border: 2px solid black;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  cursor: pointer;
+}
+
+.card-input button:hover {
+  transform: scale(1.05);
 }
 
 ul li {
@@ -94,10 +125,21 @@ ul li {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  text-transform: capitalize;
+  line-height: 2;
 }
 
-span {
+ul li:hover {
+  transform: translateX(3px);
+}
+
+.delete-btn {
   cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.empty-msg {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  font-style: italic;
 }
 </style>
