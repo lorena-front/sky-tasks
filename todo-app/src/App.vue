@@ -1,9 +1,20 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import './style.css'
 
 const task = ref('')
 const tasks = ref([])
+
+onMounted(() => {
+  const storedItems = localStorage.getItem('myContent')
+  if (storedItems) {
+    tasks.value = JSON.parse(storedItems)
+  }
+})
+
+watch(tasks, (newList) => {
+  localStorage.setItem('myContent', JSON.stringify(newList))
+}, { deep: true })
 
 const addTask = () => {
   if (task.value.trim() !== '') {
@@ -79,6 +90,8 @@ main {
 ul li {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 span {
