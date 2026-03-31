@@ -65,6 +65,7 @@ main {
   width: 20rem;
   height: 25rem;
   text-align: center;
+  overflow-y: auto;
 }
 
 .card-content {
@@ -85,6 +86,7 @@ main {
 
 .card-input button {
   margin-left: 1rem;
+  font-family: var(--inter-font);
 }
 
 ul li {
@@ -92,6 +94,7 @@ ul li {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  text-transform: capitalize;
 }
 
 span {

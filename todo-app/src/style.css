@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+/* Variables */
+
+:root {
+    --jolly-font: "Gabriela", serif; 
+    --inter-font: "Inter", sans-serif;
+}
+
 /* Layout */
 
 body {
@@ -13,4 +20,5 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    font-family: var(--jolly-font);
 }
