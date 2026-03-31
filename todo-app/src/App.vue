@@ -52,6 +52,9 @@ const deleteTask = (index) => {
         </p>
       </div>
     </div>
+    <a href="https://github.com/lorena-front" target="_blank" rel="noopener noreferrer">
+      <img class="heart-icon" src="./assets/images/pixel-heart.gif" alt="">
+    </a>
   </main>
 </template>
 
@@ -59,6 +62,7 @@ const deleteTask = (index) => {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -79,7 +83,6 @@ h1 {
   box-shadow: 8px 8px 0 black;
   background-color: rgb(255 182 214 / 92%);
   backdrop-filter: blur(2px);
-  border-radius: 0.5rem;
   transform: rotate(-0.5deg);
 }
 
@@ -141,5 +144,13 @@ ul li:hover {
   opacity: 0.7;
   font-size: 0.95rem;
   font-style: italic;
+}
+
+.heart-icon {
+  width: 2.8125rem;
+  position: fixed;
+  bottom: clamp(10%, 8vw, 15%);
+  left: 51%;
+  transform: translateX(-50%);
 }
 </style>
