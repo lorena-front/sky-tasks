@@ -9,3 +9,7 @@ A simple task manager built with Vue.js, focused on practicing reactivity, compo
 - Remove tasks
 - Animated background
 - Local storage persistence
+
+## References
+
+[Cloud image](https://free-game-assets.itch.io/free-sky-with-clouds-background-pixel-art-set)
