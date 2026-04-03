@@ -1,12 +1,13 @@
 # Sky Tasks
 
-![preview](./preview.png)
+![Preview](preview.png)
 
 A simple task manager built with Vue.js, focused on practicing reactivity, component structure and UI styling.
 
 ## Features
 - Add tasks
 - Remove tasks
+- Edit tasks
 - Animated background
 - Local storage persistence
 

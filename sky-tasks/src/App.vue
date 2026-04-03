@@ -18,7 +18,10 @@ watch(tasks, (newList) => {
 
 const addTask = () => {
   if (task.value.trim() !== '') {
-    tasks.value.push(task.value)
+    tasks.value.push({
+      text: task.value,
+      editing: false
+    })
     task.value = ''
   }
 }
@@ -39,8 +42,16 @@ const deleteTask = (index) => {
           <button @click="addTask">Add</button>
         </div>
         <ul>
-          <li v-for="(item, index) in tasks" :key="index">
-            {{ item }}
+          <li v-for="(task, index) in tasks" :key="index">
+            <span v-if="!task.editing">
+              {{ task.text }}
+            </span>
+
+            <input v-else v-model="task.text" @keyup.enter="task.editing = false" />
+
+            <span class="material-symbols-outlined delete-btn" @click="task.editing = !task.editing">
+              edit
+            </span>
 
             <span class="material-symbols-outlined delete-btn" @click="deleteTask(index)">
               close
