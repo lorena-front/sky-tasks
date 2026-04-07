@@ -1,43 +1,42 @@
 /* Reset */
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 /* Variables */
 
 :root {
-    --main-font: "Pixelify Sans", sans-serif;
-    --bg-color: #bde0fe;
+  --main-font: 'Pixelify Sans', sans-serif;
+  --bg-color: #bde0fe;
 }
 
 /* Layout */
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: var(--main-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: var(--main-font);
 
-    background-image: url(./assets/images/cloud.png);
-    background-repeat: repeat-x;
-    background-size: cover;
-    background-color: var(--bg-color);
+  background-image: url(./assets/images/cloud.png);
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-color: var(--bg-color);
 
-    animation: cloudAnimation 65s linear infinite;
-    overflow: hidden;
-
+  animation: cloudAnimation 65s linear infinite;
+  overflow: hidden;
 }
 
 @keyframes cloudAnimation {
-    0% {
-        background-position: 0 0;
-    }
+  0% {
+    background-position: 0 0;
+  }
 
-    100% {
-        background-position: -1000px 0;
-    }
+  100% {
+    background-position: -1000px 0;
+  }
 }

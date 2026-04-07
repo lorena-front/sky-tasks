@@ -12,15 +12,19 @@ onMounted(() => {
   }
 })
 
-watch(tasks, (newList) => {
-  localStorage.setItem('myContent', JSON.stringify(newList))
-}, { deep: true })
+watch(
+  tasks,
+  (newList) => {
+    localStorage.setItem('myContent', JSON.stringify(newList))
+  },
+  { deep: true },
+)
 
 const addTask = () => {
   if (task.value.trim() !== '') {
     tasks.value.push({
       text: task.value,
-      editing: false
+      editing: false,
     })
     task.value = ''
   }
@@ -29,7 +33,6 @@ const addTask = () => {
 const deleteTask = (index) => {
   tasks.value.splice(index, 1)
 }
-
 </script>
 
 <template>
@@ -38,7 +41,8 @@ const deleteTask = (index) => {
       <h1>Tasks <span class="material-symbols-outlined">ink_pen</span></h1>
       <div class="card-content">
         <div class="card-input">
-          <input type="text" v-model="task" @keyup.enter="addTask" />
+          <input type="text" v-model="task" @keyup.enter="addTask" maxlength="80" />
+          {{ task.length }}/80
           <button @click="addTask">Add</button>
         </div>
         <ul>
@@ -47,7 +51,7 @@ const deleteTask = (index) => {
               {{ task.text }}
             </span>
 
-            <input v-else v-model="task.text" @keyup.enter="task.editing = false" />
+            <textarea maxlength="80" class="editInput" v-else v-model="task.text" @keyup.enter="task.editing = false" />
 
             <span class="material-symbols-outlined delete-btn" @click="task.editing = !task.editing">
               edit
@@ -58,13 +62,11 @@ const deleteTask = (index) => {
             </span>
           </li>
         </ul>
-        <p class="empty-msg" v-if="tasks.length === 0">
-          There's nothing yet.
-        </p>
+        <p class="empty-msg" v-if="tasks.length === 0">There's nothing yet.</p>
       </div>
     </div>
     <a href="https://github.com/lorena-front" target="_blank" rel="noopener noreferrer">
-      <img class="heart-icon" src="./assets/images/pixel-heart.gif" alt="">
+      <img class="heart-icon" src="./assets/images/pixel-heart.gif" alt="" />
     </a>
   </main>
 </template>
@@ -90,7 +92,7 @@ h1 {
   width: 20rem;
   height: 25rem;
   overflow-y: auto;
-  padding: .9375rem;
+  padding: 0.9375rem;
   box-shadow: 8px 8px 0 black;
   background-color: rgb(255 182 214 / 92%);
   backdrop-filter: blur(2px);
@@ -108,6 +110,7 @@ h1 {
   margin-top: 1rem;
   display: flex;
   align-items: center;
+  gap: .2rem;
 }
 
 .card-input input,
@@ -140,6 +143,17 @@ ul li {
   justify-content: space-between;
   gap: 1rem;
   line-height: 2;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+li span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.material-symbols-outlined {
+  flex-shrink: 0;
 }
 
 ul li:hover {
@@ -163,5 +177,10 @@ ul li:hover {
   bottom: clamp(10%, 8vw, 15%);
   left: 51%;
   transform: translateX(-50%);
+}
+
+.editInput {
+  width: 12.75rem;
+  height: 5rem;
 }
 </style>
